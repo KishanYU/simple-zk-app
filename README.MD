@@ -91,26 +91,36 @@ Check **[NOIR_GUIDE.md](./NOIR_GUIDE.md)** for:
 - Best practices
 - Resources and documentation
 
-### 4. Run Your First Proof
+### 4. Install compatible Barretenberg version
 
 ```bash
-# 1. Check circuit structure
-nargo check
+bbup --noir-version 1.0.0-beta.14
+```
 
-# 2. Compile to ACIR
+### 5. Run Your First Proof
+
+```bash
+# 1. Compile circuit
 nargo compile
+
+# 2. Generate verification key (one-time)
+bb write_vk -b ./target/simple_circuit.json -o ./target
 
 # 3. Execute to generate witness
 nargo execute
 
-# 4. Generate verification key
-bb write_vk -b ./target/simple_circuit.json -o ./target
-
-# 5. Generate proof
+# 4. Generate proof
 bb prove -b ./target/simple_circuit.json -w ./target/simple_circuit.gz -o ./target
 
-# 6. Verify proof
+# 5. Verify proof
 bb verify -k ./target/vk -p ./target/proof
+```
+
+### 6. Run the Frontend Demo
+
+```bash
+node server.js
+# Open http://localhost:3000
 ```
 
 ---

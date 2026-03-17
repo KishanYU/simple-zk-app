@@ -4,6 +4,6 @@ type = "bin"
  #bin means binary
 
 
-authors = ["khushii"]
+authors = ["zkverify", "khushi"]
 
 [dependencies]
